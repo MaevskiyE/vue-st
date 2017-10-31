@@ -5,6 +5,7 @@
         </div>
         Many details
         <p>user name: {{name}}</p>
+        <button @click="resetName">Reset name</button>
     </div>
 </template>
 
@@ -28,6 +29,12 @@
     export default {
         props: {
             name: String
+        },
+        methods: {
+            resetName(){
+                this.name = 'Max'
+                this.$emit('nameWasReset', this.myName)
+            }
         }
     }
 </script>

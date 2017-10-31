@@ -7,7 +7,7 @@
         </div>
         <hr>
         <div class="blocks">
-            <red :name="name"></red>
+            <red :name="name" @nameWasReset="name = $event"></red>
             <green :msg="hello"></green>
         </div>
     </div>
