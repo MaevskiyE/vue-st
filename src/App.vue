@@ -1,62 +1,45 @@
-    <template>
+<template>
     <div class="base">
-        <div class="title">
-            The User Components
-            <p>I'm awesome user!</p>
-            <button @click="changeName">Change Name</button>
-        </div>
-        <hr>
-        <div class="blocks">
-            <red :name="name" @nameWasReset="name = $event"></red>
-            <green :msg="hello"></green>
-        </div>
+        <appHeader :counter="quotesCounter" :progress="progress"></appHeader>
+        <newQuote :quotes="quotes"></newQuote>
+        <quotes :quotes="quotes"></quotes>
     </div>
 </template>
 
 <script>
-    import Green from './components/green.vue'
-    import Red from './components/red.vue'
+    import Header from './components/header.vue'
+    import newQuote from './components/newQuote.vue'
+    import Quotes from './components/quotes.vue'
+    import { bus } from './main'
 
     export default {
-        data: function() {
-            return {
-                hello: 'Hello World',
-                name: 'Kris'
-            };
+        data() {
+          return {
+            quotes: ['This is test quote','This is test quote', 'This is test quote']
+          }
+        },
+        computed: {
+          quotesCounter() {
+            return this.quotes.length
+          },
+          progress(){
+            return this.quotesCounter + '0'
+          }
         },
         components: {
-            Green,
-            Red
+          appHeader: Header,
+          newQuote,
+          Quotes
         },
-        methods: {
-          changeName() {
-              this.name = 'Eugen'
-          }
+        created() {
+          bus.$on('deletedQuote', (quote) => {
+            this.quotes.splice(quote, 1)
+        })
         }
     }
 </script>
 
 <style scoped>
-    .blocks{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
-    .base {
-        width: 1170px;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        background-color: #ccc;
-        padding: 30px;
-        box-sizing: border-box;
-    }
-    .title {
-        font-size: 36px;
-        font-weight: bold;
-        height: 200px;
-        border-bottom: 1px solid #fff;
-    }
+
 
 </style>
