@@ -16,7 +16,11 @@
     },
     created() {
       bus.$on('addedQuote', (quote) => {
-        this.quotes.push(quote)
+        if(this.quotes.length <= 9) {
+          this.quotes.push(quote)
+        } else {
+          alert('Перед добавлением - удалите что-то из старых цитат')
+        }
       })
     },
     components: {
@@ -32,6 +36,7 @@
 
 <style>
   .row {
-    display: flex;
+    display: inline-block;
+    width: 100%;
   }
 </style>

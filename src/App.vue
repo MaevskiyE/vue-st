@@ -1,6 +1,6 @@
 <template>
     <div class="base">
-        <appHeader :counter="quotesCounter" :progress="progress"></appHeader>
+        <appHeader :counter="quotesCounter" :progress="progress" :maxQuotes="maxQuotes"></appHeader>
         <newQuote :quotes="quotes"></newQuote>
         <quotes :quotes="quotes"></quotes>
     </div>
@@ -15,7 +15,8 @@
     export default {
         data() {
           return {
-            quotes: ['This is test quote','This is test quote', 'This is test quote']
+            quotes: ['This is test quote','This is test quote', 'This is test quote'],
+            maxQuotes: 10
           }
         },
         computed: {
@@ -34,7 +35,7 @@
         created() {
           bus.$on('deletedQuote', (quote) => {
             this.quotes.splice(quote, 1)
-        })
+            })
         }
     }
 </script>

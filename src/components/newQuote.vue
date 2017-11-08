@@ -2,7 +2,7 @@
   <div class="newQuote">
     <form action="">
       <div class="title">Quote</div>
-      <textarea v-model="newQuote" rows='7' cols='100' @keyup.enter="addNew"></textarea>
+      <input v-model="newQuote" style="width: 350px; height: 50px; font-size: 16px">
       <button @click.prevent="addNew">Add quote</button>
     </form>
   </div>
@@ -18,10 +18,12 @@
     },
     methods: {
       addNew() {
-        if(this.newQuote !== '') {
-          bus.$emit('addedQuote', this.newQuote);
-          this.newQuote = '';
+        let value = this.newQuote.trim();
+        if (!value ) {
+          return
         }
+          bus.$emit('addedQuote', value);
+          this.newQuote = '';
       }
     }
   }

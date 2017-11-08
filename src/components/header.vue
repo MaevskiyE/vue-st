@@ -2,7 +2,7 @@
   <div class="header">
     <div class="title">Quotes Added</div>
     <div class="progress-wrap">
-      <div class="progress" :style="{width: progress + '%'}">{{counter}}/10</div>
+      <div class="progress" :style="{width: progress + '%'}">{{counter}}/{{maxQuotes}}</div>
     </div>
   </div>
 </template>
@@ -14,18 +14,12 @@
       counter: {
         type: Number
       },
+      maxQuotes: {
+        type: Number
+      },
       progress: {
         type: String
       }
-    },
-    data() {
-      return {
-      }
-    },
-    created() {
-      bus.$on('progress', (info) => {
-        this.info = info;
-      })
     }
   }
 </script>
@@ -49,5 +43,6 @@
     height: 100%;
     background-color: red;
     text-align: center;
+    transition: .3s;
   }
 </style>
