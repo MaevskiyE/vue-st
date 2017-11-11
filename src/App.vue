@@ -1,42 +1,37 @@
 <template>
-    <div class="base">
-        <appHeader :counter="quotesCounter" :progress="progress"></appHeader>
-        <newQuote :quotes="quotes"></newQuote>
-        <quotes :quotes="quotes"></quotes>
+    <div class="container">
+        <p v-highlight:backgroundColor.delayed.blink="{mainColor: 'yellow', secondColor: 'brown', delay: 500}">Some text</p>
     </div>
 </template>
 
 <script>
-    import Header from './components/header.vue'
-    import newQuote from './components/newQuote.vue'
-    import Quotes from './components/quotes.vue'
-    import { bus } from './main'
-
-    export default {
-        data() {
-          return {
-            quotes: ['This is test quote','This is test quote', 'This is test quote']
+  export default {
+    directives: {
+      'highlight': {
+        bind(el, binding, vnode) {
+          let delay = 0
+          if (binding.modifiers['delayed']) {
+            delay = 3000;
           }
-        },
-        computed: {
-          quotesCounter() {
-            return this.quotes.length
-          },
-          progress(){
-            return this.quotesCounter + '0'
+          if (binding.modifiers['blink']) {
+            let mainColor = binding.value.mainColor;
+            let secondColor = binding.value.secondColor;
+            let currentColor = mainColor;
+            setTimeout(() => {
+              setInterval(() => {
+                currentColor == secondColor ? currentColor = mainColor : currentColor = secondColor;
+                if (binding.arg == 'backgroundColor') {
+                  el.style.backgroundColor = currentColor
+                } else {
+                  el.style.color = currentColor
+                }
+              }, binding.value.delay)
+            }, delay)
           }
-        },
-        components: {
-          appHeader: Header,
-          newQuote,
-          Quotes
-        },
-        created() {
-          bus.$on('deletedQuote', (quote) => {
-            this.quotes.splice(quote, 1)
-        })
         }
+      }
     }
+  }
 </script>
 
 <style scoped>
