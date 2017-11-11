@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "postcss-cssnext": "^3.0.2",
-    "vue": "^2.4.4"
+    "vue": "^2.5.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -19,11 +19,11 @@
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.4",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.6.0",
     "sass-loader": "^6.0.6",
-    "vue-loader": "^13.0.5",
-    "vue-template-compiler": "^2.4.4",
+    "vue-loader": "^13.5.0",
+    "vue-template-compiler": "^2.5.3",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1"
+    "webpack-dev-server": "^2.9.4"
   }
 }
