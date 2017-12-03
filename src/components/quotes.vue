@@ -9,6 +9,11 @@
   import { bus } from '../main'
 
   export default {
+    data: function() {
+      return{
+        message: ''
+      }
+    },
     props: {
       quotes: {
         type: Array
@@ -16,10 +21,11 @@
     },
     created() {
       bus.$on('addedQuote', (quote) => {
-        if(this.quotes.length <= 9) {
+        if(this.quotes.length < 10) {
           this.quotes.push(quote)
+          this.success()
         } else {
-          alert('Перед добавлением - удалите что-то из старых цитат')
+          this.error()
         }
       })
     },
@@ -29,7 +35,21 @@
     methods: {
       deleteQuote(index){
         bus.$emit('deletedQuote', index)
-      }
+      },
+      error() {
+        this.$message({
+          showClose: true,
+          message: 'You should delete quote before add new one',
+          type: 'warning'
+        })
+      },
+      success() {
+        this.$message({
+          showClose: true,
+          message: 'Your quote is successfully added',
+          type: 'success'
+        })
+      },
     }
   }
 </script>

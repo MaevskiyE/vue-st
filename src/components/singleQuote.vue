@@ -10,7 +10,7 @@
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .quotes{
     display: inline-block;
   }
@@ -18,7 +18,7 @@
   .quote{
     display: flex;
     align-items: center;
-    border: 2px dotted #ccc;
+    border: 2px dotted red;
     padding: 20px;
     margin: 10px;
     font-family: cursive;
