@@ -2,13 +2,13 @@
   <div class="container">
     <div class="newQuote">
       <form>
-        <div class="title">Quote</div>
+        <div class="title">Your quote:</div>
         <textarea v-model="newQuote"></textarea>
       </form>
       <el-button @click.prevent="addNew" type="success" plain>Add new quote</el-button>
       <el-button @click.prevent="addRandom" type="success" plain>Add random quote</el-button>
     </div>
-    <div class="legend">
+    <div class="legend">Legend:
       <p>"Add new quote" - add to store your quote from textarea</p>
       <p>"Add random quote" - generate random quote to store</p>
       <p>By pressing on already created quote - you will delete it</p>
@@ -67,7 +67,8 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin-bottom: 25px;
   }
   .newQuote{
 
@@ -75,7 +76,16 @@
       width: 355px;
       height: 70px;
       font-size: 16px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
+    }
+  }
+  .legend{
+    font-size: 16px;
+    font-weight: bold;
+    p{
+      margin: 5px 0;
+      /*font-size: 16px;*/
+      font-weight: normal;
     }
   }
 </style>

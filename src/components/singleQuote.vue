@@ -14,14 +14,12 @@
     flex-direction: column;
     border: 1px solid #67c23a ;
     padding: 10px;
-    margin: 5px;
+    margin: 5px 10px 5px 0;
     font-family: cursive;
     font-size: 14px;
     width: 30%;
-    /*height: auto;*/
-      box-sizing: content-box;
 
-      &-author{
+    &-author{
           align-self: flex-end;
       }
     &:hover{
