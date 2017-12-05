@@ -24,25 +24,31 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .header{
-    width: 1170px;
-    margin: 100px auto;
-  }
-  .title{
-    font-size: 36px;
-    font-weight: bold;
-  }
-  .progress-wrap{
     width: 100%;
-    height: 25px;
-    background-color: #ccc;
+    margin: 30px auto;
+    .title{
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .progress-wrap{
+      width: 100%;
+      margin: 0 5px;
+      height: 25px;
+      background-color: #f0f9eb;
+      border: 1px solid #c2e7b0;
+      .progress{
+        width: 10%;
+        height: 100%;
+        background-color: #67c23a;
+        text-align: center;
+        transition: .3s;
+      }
+    }
   }
-  .progress{
-    width: 10%;
-    height: 100%;
-    background-color: red;
-    text-align: center;
-    transition: .3s;
-  }
+
+
+
 </style>

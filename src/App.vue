@@ -1,5 +1,5 @@
 <template>
-    <div class="base">
+    <div class="container">
         <appHeader :counter="quotesCounter" :progress="progress" :maxQuotes="maxQuotes"></appHeader>
         <newQuote :quotes="quotes"></newQuote>
         <quotes :quotes="quotes"></quotes>
@@ -15,7 +15,7 @@
     export default {
         data() {
           return {
-            quotes: ['This is test quote','This is test quote', 'This is test quote'],
+            quotes: [],
             maxQuotes: 10
           }
         },
@@ -40,7 +40,13 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+    body{
+        background-color: #eeeeee;
+    }
+    .container{
+        width: 960px;
+        margin: 0 auto;
+    }
 
 </style>

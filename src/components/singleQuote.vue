@@ -1,30 +1,29 @@
 <template>
-  <div class="quotes">
     <div class="quote">
-      <slot ></slot>
+          <slot></slot>
     </div>
-  </div>
 </template>
 
 <script>
 
 </script>
 
-<style lang="scss" scoped>
-  .quotes{
-    display: inline-block;
-  }
-
+<style lang="scss">
   .quote{
     display: flex;
-    align-items: center;
-    border: 2px dotted red;
-    padding: 20px;
-    margin: 10px;
+    flex-direction: column;
+    border: 1px solid #67c23a ;
+    padding: 10px;
+    margin: 5px;
     font-family: cursive;
-    font-size: 24px;
-    width: 315px;
-    height: 75px;
+    font-size: 14px;
+    width: 30%;
+    /*height: auto;*/
+      box-sizing: content-box;
+
+      &-author{
+          align-self: flex-end;
+      }
     &:hover{
       cursor: pointer;
       background-color: #fa0;

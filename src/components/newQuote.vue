@@ -1,49 +1,81 @@
 <template>
-  <div class="newQuote">
-    <form action="">
-      <div class="title">Quote</div>
-      <input v-model="newQuote" style="width: 350px; height: 50px; font-size: 16px">
-      <button @click.prevent="addNew">Add quote</button>
-    </form>
+  <div class="container">
+    <div class="newQuote">
+      <form>
+        <div class="title">Quote</div>
+        <textarea v-model="newQuote"></textarea>
+      </form>
+      <el-button @click.prevent="addNew" type="success" plain>Add new quote</el-button>
+      <el-button @click.prevent="addRandom" type="success" plain>Add random quote</el-button>
+    </div>
+    <div class="legend">
+      <p>"Add new quote" - add to store your quote from textarea</p>
+      <p>"Add random quote" - generate random quote to store</p>
+      <p>By pressing on already created quote - you will delete it</p>
+    </div>
   </div>
 </template>
 
 <script>
   import { bus } from '../main'
+  import axios from 'axios'
+
   export default {
     data() {
       return {
-        newQuote: ''
+        newQuote: '',
+        randomQuote: []
       }
     },
     methods: {
       addNew() {
-        let value = this.newQuote.trim();
-        if (!value ) {
+        if(!this.newQuote.trim()) {
           return
+        }
+        let value = {
+          quote: this.newQuote,
+          author: ''
         }
           bus.$emit('addedQuote', value);
           this.newQuote = '';
+      },
+      addRandom(){
+        axios.get(`https://random-quote-generator.herokuapp.com/api/quotes/random`)
+          .then(response => {
+            // JSON responses are automatically parsed.
+
+            this.randomQuote = response.data
+            let value = this.randomQuote;
+            if (!value ) {
+              return
+            }
+            bus.$emit('addedQuote', value);
+            this.newQuote = '';
+          })
       }
     }
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .title{
     align-self: flex-start;
     font-size: 24px;
     font-weight: bold;
   }
-  .newQuote{
-    width: 825px;
-    margin: auto;
+  .container{
+    width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
   }
-  textarea {
-    margin-bottom: 25px;
+  .newQuote{
+
+    textarea{
+      width: 355px;
+      height: 70px;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
   }
 </style>

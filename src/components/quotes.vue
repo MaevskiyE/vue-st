@@ -1,6 +1,13 @@
 <template>
-  <div class="row">
-    <single-quote @click.native='deleteQuote(index)' v-for="(quote, index) in quotes" :key="index"> {{ quote }}</single-quote>
+  <div class="quotes">
+    <single-quote @click.native='deleteQuote(index)' v-for="(quote, index) in quotes" :key="index">
+      <div class="quote-body">
+        {{ quote.quote }}
+      </div>
+      <span class="quote-author">
+        {{quote.author}}
+      </span>
+    </single-quote>
   </div>
 </template>
 
@@ -54,9 +61,11 @@
   }
 </script>
 
-<style>
-  .row {
-    display: inline-block;
-    width: 100%;
+<style lang="scss">
+  .quotes{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 </style>
