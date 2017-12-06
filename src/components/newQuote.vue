@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="newQuote_wrap">
     <div class="newQuote">
       <form>
         <div class="title">Your quote:</div>
@@ -43,7 +43,6 @@
         axios.get(`https://random-quote-generator.herokuapp.com/api/quotes/random`)
           .then(response => {
             // JSON responses are automatically parsed.
-
             this.randomQuote = response.data
             let value = this.randomQuote;
             if (!value ) {
@@ -63,27 +62,29 @@
     font-size: 24px;
     font-weight: bold;
   }
-  .container{
+
+  .newQuote_wrap{
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     margin-bottom: 25px;
-  }
-  .newQuote{
-
-    textarea{
-      width: 355px;
-      height: 70px;
-      font-size: 16px;
-      margin-bottom: 10px;
+    .newQuote{
+      textarea{
+        width: 355px;
+        height: 70px;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
     }
   }
   .legend{
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
+    margin-top: 5px;
     p{
       margin: 5px 0;
+      font-size: 16px;
       font-weight: normal;
     }
   }
