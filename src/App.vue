@@ -7,6 +7,11 @@
 </template>
 
 <script>
+  import Header from './components/header.vue'
+  import newQuote from './components/newQuote.vue'
+  import Quotes from './components/quotes.vue'
+  import { bus } from './main'
+
     export default {
         data() {
           return {
