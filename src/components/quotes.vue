@@ -46,7 +46,7 @@
       error() {
         this.$message({
           showClose: true,
-          message: 'You should delete quote before add new one',
+          message: 'You should delete quote before adding new one',
           type: 'warning'
         })
       },
